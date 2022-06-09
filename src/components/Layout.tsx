@@ -1,9 +1,7 @@
 import Head from 'next/head';
 import type { FC, ReactNode } from 'react';
-import Header from './Header'
 import Footer from './Footer'
-// import Header from 'components/Header';
-// import Footer from 'components/Footer';
+import Header from './Header'
 
 type Information = {
   PageTitle: string;
@@ -67,9 +65,9 @@ const Layout: FC<Props> = ({ PageTitle, children, PageDescription = DefaultDescr
       <TwitterMetas PageTitle={PageTitle} PageDescription={PageDescription} PageImage={PageImage} />
     </Head>
     <main>
-      {<Header /> }
+      <Header />
       {children}
-      {<Footer /> }
+      <Footer />
     </main>
   </div>
 );

@@ -1,13 +1,14 @@
-import Link from 'next/link'
-const Header = () => {
-	return (
-		<div className="Header p-3 bg-gray-700 hadow-lg">
-			<div className="Title inline text-xl ">
+import Link from 'next/link';
+import React from 'react'
+
+const Header:React.FC = () => (
+		<div className="p-3 bg-gray-700 hadow-lg">
+			<div className="Title inline text-xl text-white">
 				Programist
 			</div>
-			<div className='inline Links'>
+			<div className='inline'>
 				<div className="inline text-stone-50 ml-1 pl-10 hover:text-gray-500 ">
-					<Link href='home'>
+					<Link href='/'>
 						ホーム
 					</Link>
 				</div>
@@ -28,6 +29,5 @@ const Header = () => {
 				</div>
 			</div>
 		</div>
-	)
-}
-export default Header
+)
+export default Header;
