@@ -2,8 +2,7 @@ import type { User } from 'firebase/auth';
 import { onAuthStateChanged } from 'firebase/auth';
 import type { ReactNode } from 'react';
 import React, { useState, useEffect } from 'react';
-import auth from './firebase';
-
+import { auth } from './firebase';
 
 type FirebaseContextType = {
   user: User | null;
@@ -21,7 +20,7 @@ const AuthProvider = ({ children }: { children: ReactNode }) => {
 	});
   });
   if (loading) {
-    return <>now loadin...</>;
+    return <div className="text-4xl text-center">now loadin...</div>;
   }
   return <FirebaseContext.Provider value={user}>{children}</FirebaseContext.Provider>;
 };
