@@ -1,10 +1,9 @@
 import type { NextPage } from 'next';
 import Layout from '../components/Layout/Layout';
-import Popup from '../components/popup';
 
 const Timeline: NextPage = () => (
   <Layout PageTitle="Timeline">
-    <Popup />
+  <div>this pageg is timeline</div>
   </Layout>
 );
 export default Timeline;

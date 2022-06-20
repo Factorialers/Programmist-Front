@@ -1,5 +1,5 @@
 import router from 'next/router';
-import { MouseEvent, useEffect, useContext } from 'react';
+import { useEffect, useContext } from 'react';
 import { FirebaseContext } from '../../libs/firebase/authProvider';
 import { auth } from '../../libs/firebase/firebase';
 

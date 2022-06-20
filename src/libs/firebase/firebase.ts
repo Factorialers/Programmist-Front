@@ -1,5 +1,6 @@
 import { initializeApp } from 'firebase/app';
 import { GoogleAuthProvider, getAuth, signInWithPopup } from 'firebase/auth';
+import { getStorage} from "firebase/storage";
 import router from "next/router"
 
 const firebaseConfig = {
@@ -15,13 +16,14 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const provider = new GoogleAuthProvider();
 const auth = getAuth(app);
+const storage = getStorage(app);
 async function Login() {
   try {
     await signInWithPopup(auth, provider).then(()=>{
       router.push('/logged')
     })
-  } catch (error) {
-    alert(error);
+  } catch (error:unknown) {
+    alert(error)
   }
 }
-export { auth, provider, Login };
+export { auth, provider, Login,storage };
