@@ -10,17 +10,23 @@ const Logged = () => {
       router.push('/login');
     }
   });
-  const HandleLogout = ( ) => {
-		auth.signOut().then(()=>{
-      router.push('/login')
-    }).catch((error)=>{
-      alert(error)
-    })
-	  };
+  const HandleLogout = () => {
+    auth
+      .signOut()
+      .then(() => {
+        router.push('/login');
+      })
+      .catch((error) => {
+        // eslint-disable-next-line no-alert
+        alert(error);
+      });
+  };
   return (
     <div>
       <div className="text-4xl text-center">you logged in {user?.displayName}</div>
-     <button type='button' onClick={HandleLogout}>log out</button>
+      <button type="button" onClick={HandleLogout}>
+        log out
+      </button>
     </div>
   );
 };
