@@ -1,6 +1,6 @@
 import Head from 'next/head';
 import type { FC, ReactNode } from 'react';
-import Footer from '../Footer/Footer';
+import Footer from '../Footer';
 import Header from '../Header';
 
 type Props = {
