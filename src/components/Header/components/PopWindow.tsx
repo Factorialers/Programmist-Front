@@ -3,13 +3,17 @@ import { FcGoogle } from 'react-icons/fc';
 import { VscGithub } from 'react-icons/vsc';
 
 const PopWindow = () => (
-  <button
+  <div
     id="pop_window"
-    type="button"
+    role="button"
     className="flex absolute inset-0 m-auto w-80 h-52 text-center bg-base rounded-lg shadow-xl animate-appear "
     onClick={(event) => {
       event.stopPropagation();
     }}
+    onKeyDown={(event) => {
+      event.stopPropagation();
+    }}
+    tabIndex={0}
   >
     <div>
       <p className="m-3 font-bold">Login to Programmist</p>
@@ -32,7 +36,7 @@ const PopWindow = () => (
         Login with GitHub
       </button>
     </div>
-  </button>
+  </div>
 );
 
 export default PopWindow;
