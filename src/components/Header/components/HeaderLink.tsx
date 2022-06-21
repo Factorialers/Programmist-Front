@@ -10,7 +10,7 @@ const HeaderLinks: HeaderLink[] = [
   { id: 'product', jsx: <div>Product</div>, link: '/product' },
   { id: 'features', jsx: <div>Features</div>, link: '/features' },
   { id: 'about us', jsx: <div>About us</div>, link: '/about-us' },
-  { id: 'sign in', jsx: <div>Sign in</div>, link: '/sign-in' },
+  { id: 'trend', jsx: <div>Trend</div>, link: '/trend' },
 ];
 
 const Logo = (
