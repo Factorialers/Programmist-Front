@@ -1,10 +1,27 @@
-import type{ FC } from 'react';
+/* eslint-disable tailwindcss/no-custom-classname */
+import Image from 'next/image';
+import type { FC } from 'react';
+import { BsTwitter, BsFacebook, BsGithub } from 'react-icons/bs';
 
-const Footer:FC = () => (
-    <footer className="bg-gray-700 shadow-xl">
-      <div className="pt-3 text-3xl text-center text-stone-50">Programist</div>
-      <div className="pt-5 text-sm text-center text-stone-50">©2022 Factorialers ALL RIGHT RESERVERD</div>
-    </footer>
-  
+const Footer: FC = () => (
+  <footer className="p-10 bg-primary daisy-footer daisy-footer-center text-primary-content">
+    <div>
+      <Image src="/favicon.svg" width="300" height="300" alt="favicon" />
+      <p className="mb-3 text-5xl font-bold">Programmist</p>
+      <p className="font-bold">プログラムを「作品」として扱い、気軽に共有できるWebサービス</p>
+      <p>Copyright &copy; 2022 - Factorialers all right reserved.</p>
+    </div>
+    <div className="grid grid-flow-col gap-4">
+      <a>
+        <BsTwitter size={20} />
+      </a>
+      <a>
+        <BsFacebook size={20} />
+      </a>
+      <a>
+        <BsGithub size={20} />
+      </a>
+    </div>
+  </footer>
 );
 export default Footer;
