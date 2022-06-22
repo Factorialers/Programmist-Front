@@ -3,7 +3,9 @@ import type { FC } from 'react';
 
 const CustomDocument: FC = () => (
   <Html lang="ja" data-theme="programmist">
-    <Head />
+    <Head>
+      <link rel="icon" href="/favicon.svg" />
+    </Head>
     <body>
       <Main />
       <NextScript />
