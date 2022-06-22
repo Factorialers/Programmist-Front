@@ -1,10 +1,8 @@
 import type { AppProps } from 'next/app';
+import type { FC } from 'react';
 import 'tailwindcss/tailwind.css';
 import '../styles/globals.scss';
-import React from 'react'
 
-const CustomApp = ({ Component, pageProps }: AppProps) => (
-	<Component {...pageProps} />
-)
+const CustomApp: FC<AppProps> = ({ Component, pageProps }) => <Component {...pageProps} />;
 
 export default CustomApp;
