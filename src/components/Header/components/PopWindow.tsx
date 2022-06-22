@@ -1,6 +1,8 @@
 /* eslint-disable tailwindcss/no-custom-classname */
+import Router from 'next/router';
 import { FcGoogle } from 'react-icons/fc';
 import { VscGithub } from 'react-icons/vsc';
+import { loginWithGoogle, loginWithGitHub } from '../../../libs/firebase/auth';
 
 const PopWindow = () => (
   <div
@@ -20,6 +22,10 @@ const PopWindow = () => (
       <button
         type="button"
         className="my-3 mx-5 font-semibold text-neutral hover:text-primary normal-case bg-primary hover:bg-neutral border-none shadow-lg daisy-btn daisy-btn-wide"
+        onClick={async () => {
+          await loginWithGoogle();
+          Router.push('/');
+        }}
       >
         <div className="mr-3">
           <FcGoogle />
@@ -29,6 +35,10 @@ const PopWindow = () => (
       <button
         type="button"
         className="my-3 mx-5 font-semibold text-neutral hover:text-primary normal-case bg-primary hover:bg-neutral border-none shadow-lg daisy-btn daisy-btn-wide"
+        onClick={async () => {
+          await loginWithGitHub();
+          Router.push('/');
+        }}
       >
         <div className="mr-3">
           <VscGithub />
