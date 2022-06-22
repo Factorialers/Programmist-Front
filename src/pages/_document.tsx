@@ -1,6 +1,7 @@
 import { Head, Html, Main, NextScript } from 'next/document';
+import type { FC } from 'react';
 
-const CustomDocument = () => (
+const CustomDocument: FC = () => (
   <Html lang="ja" data-theme="programmist">
     <Head />
     <body>
