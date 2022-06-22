@@ -8,7 +8,7 @@ const PopWindow = () => (
   <div
     id="pop_window"
     role="button"
-    className="flex absolute inset-0 m-auto w-80 h-52 text-center bg-base rounded-lg shadow-xl animate-appear "
+    className="flex absolute inset-0 m-auto w-80 h-52 text-center bg-base rounded-lg shadow-xl drop-shadow animate-appear "
     onClick={(event) => {
       event.stopPropagation();
     }}
@@ -18,10 +18,10 @@ const PopWindow = () => (
     tabIndex={0}
   >
     <div>
-      <p className="m-3 font-bold">Login to Programmist</p>
+      <p className="m-5 font-bold">Login to Programmist</p>
       <button
         type="button"
-        className="my-3 mx-5 font-semibold text-neutral hover:text-primary normal-case bg-primary hover:bg-neutral border-none shadow-lg daisy-btn daisy-btn-wide"
+        className="mx-5 mb-5 font-semibold text-neutral hover:text-primary normal-case bg-primary hover:bg-neutral border-none shadow-lg daisy-btn daisy-btn-wide"
         onClick={async () => {
           await loginWithGoogle();
           Router.push('/');
@@ -34,7 +34,7 @@ const PopWindow = () => (
       </button>
       <button
         type="button"
-        className="my-3 mx-5 font-semibold text-neutral hover:text-primary normal-case bg-primary hover:bg-neutral border-none shadow-lg daisy-btn daisy-btn-wide"
+        className="mx-5 mb-5 font-semibold text-neutral hover:text-primary normal-case bg-primary hover:bg-neutral border-none shadow-lg daisy-btn daisy-btn-wide"
         onClick={async () => {
           await loginWithGitHub();
           Router.push('/');
