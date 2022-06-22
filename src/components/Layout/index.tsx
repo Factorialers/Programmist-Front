@@ -4,14 +4,14 @@ import Footer from '../Footer';
 import Header from '../Header';
 
 type Props = {
-  PageTitle: string;
+  pageTitle: string;
   children: ReactNode;
 };
 
-const Layout: FC<Props> = ({ PageTitle, children }) => (
+const Layout: FC<Props> = ({ pageTitle, children }) => (
   <div>
     <Head>
-      <title>{PageTitle}</title>
+      <title>{pageTitle}</title>
     </Head>
     <main>
       <Header />
