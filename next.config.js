@@ -14,6 +14,9 @@ module.exports = {
     NEXT_PUBLIC_FIREBASE_ADMIN_PRIVATE_KEY: process.env.NEXT_PUBLIC_FIREBASE_ADMIN_PRIVATE_KEY,
     NEXT_PUBLIC_FIREBASE_ADMIN_CLIENT_EMAIL: process.env.NEXT_PUBLIC_FIREBASE_ADMIN_CLIENT_EMAIL,
   },
+  images: {
+    domains: ['googleusercontent.com'],
+  },
 };
 
 const nextConfig = {
