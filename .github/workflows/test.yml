@@ -27,9 +27,6 @@ jobs:
       - name: Build
         run: yarn build
 
-      - name: Audit
-        run: yarn audit
-
   test:
     name: Test
     runs-on: ubuntu-latest
