@@ -1,0 +1,12 @@
+overwrite: true
+schema: 'https://programmist-server.herokuapp.com/graphql'
+documents: 'src/libs/graphql/operation/**/*.gql'
+generates:
+  src/libs/graphql/generated/graphql.ts:
+    plugins:
+      - 'typescript'
+      - 'typescript-operations'
+      - 'typescript-urql'
+  src/libs/graphql/schema.json:
+    plugins:
+      - 'introspection'

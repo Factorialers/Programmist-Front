@@ -1,0 +1,7 @@
+query FindUserById($where: UserWhereUniqueInput!) {
+  findUserById(where: $where) {
+    createdAt
+    id
+    name
+  }
+}

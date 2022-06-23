@@ -1,0 +1,7 @@
+query FindUsers($where: UserWhereInput, $take: Int) {
+  findUsers(where: $where, take: $take) {
+    createdAt
+    id
+    name
+  }
+}
