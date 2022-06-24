@@ -37,7 +37,7 @@ const authConfig: AuthConfig<AuthState> = {
         ...fetchOptions,
         headers: {
           ...fetchOptions.headers,
-          Authorization: `Bearer ${authState.token}`,
+          Authorization: `${authState.token}`,
         },
       },
     });

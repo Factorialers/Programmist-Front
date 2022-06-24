@@ -1,5 +1,5 @@
 import { useAuth } from '../../libs/firebase/auth';
-import Avatar from "../Avatar"
+import CurrentUserAvatar from './components/CurrentUserAvatar';
 import LinkList from './components/LinkList';
 import Modal from './components/Modal';
 
@@ -11,7 +11,7 @@ const Header = () => {
       <div className="flex col-span-8 col-start-2 justify-center items-center space-x-16">
         <LinkList />
       </div>
-      <div className="text-right">{user ? <Avatar user={user} /> : <Modal />}</div>
+      <div className="text-right">{user ? <CurrentUserAvatar user={user} /> : <Modal />}</div>
     </div>
   );
 };

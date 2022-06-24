@@ -1,5 +1,5 @@
 overwrite: true
-schema: 'https://programmist-server.herokuapp.com/graphql'
+schema: 'https://programmist-server-develop.herokuapp.com/graphql'
 documents: 'src/libs/graphql/operation/**/*.gql'
 generates:
   src/libs/graphql/generated/graphql.ts:
