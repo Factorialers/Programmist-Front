@@ -2,11 +2,15 @@ import type { AppProps } from 'next/app';
 import type { FC } from 'react';
 import { RecoilRoot } from 'recoil';
 import 'tailwindcss/tailwind.css';
+import { Provider } from 'urql';
+import urqlClient from '../libs/urql';
 import '../styles/globals.scss';
 
 const CustomApp: FC<AppProps> = ({ Component, pageProps }) => (
   <RecoilRoot>
-    <Component {...pageProps} />
+    <Provider value={urqlClient}>
+      <Component {...pageProps} />
+    </Provider>
   </RecoilRoot>
 );
 
