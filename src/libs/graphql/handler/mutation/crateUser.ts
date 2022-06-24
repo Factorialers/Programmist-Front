@@ -1,10 +1,9 @@
 import { useCreateUserMutation } from '../../generated/graphql';
 
 const useCreateUserMutationHandler = () => {
-  const [{ data, fetching }] = useCreateUserMutation();
-  const createdUser = data?.createUser;
+  const [{ data, fetching }, executeMutation] = useCreateUserMutation();
 
-  return { createdUser, fetching };
+  return { data, fetching, executeMutation };
 };
 
 export default useCreateUserMutationHandler;
