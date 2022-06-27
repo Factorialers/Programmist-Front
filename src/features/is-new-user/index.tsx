@@ -18,7 +18,7 @@ const FindUserById: FC<{ user: User }> = ({ user }) => {
   }
 
   return (
-    <div className="flex flex-col justify-center items-center">
+    <div className="flex flex-col justify-center items-center m-40">
       <Loading size={150} />
     </div>
   );
