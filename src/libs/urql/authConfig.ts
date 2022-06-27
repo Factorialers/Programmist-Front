@@ -6,12 +6,13 @@ import auth from '../firebase/auth';
 type AuthState = {
   token: string;
   result: IdTokenResult;
+  uid: string;
 };
 
 const authConfig: AuthConfig<AuthState> = {
   getAuth: async () => {
     const tokenResult = await auth.currentUser?.getIdTokenResult();
-    return tokenResult ? { token: tokenResult.token, result: tokenResult } : null;
+    return tokenResult && auth.currentUser ? { token: tokenResult.token, result: tokenResult, uid: auth.currentUser.uid } : null;
   },
   willAuthError: ({ authState }) => {
     if (authState?.result?.expirationTime) {
@@ -38,6 +39,7 @@ const authConfig: AuthConfig<AuthState> = {
         headers: {
           ...fetchOptions.headers,
           Authorization: `${authState.token}`,
+          uid: `${authState.uid}`,
         },
       },
     });

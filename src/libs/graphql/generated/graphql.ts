@@ -17,10 +17,6 @@ export type Scalars = {
   DateTime: any;
 };
 
-export type DateTimeFieldUpdateOperationsInput = {
-  set?: InputMaybe<Scalars['DateTime']>;
-};
-
 export type DateTimeFilter = {
   equals?: InputMaybe<Scalars['DateTime']>;
   gt?: InputMaybe<Scalars['DateTime']>;
@@ -111,10 +107,6 @@ export enum SortOrder {
   Desc = 'desc'
 }
 
-export type StringFieldUpdateOperationsInput = {
-  set?: InputMaybe<Scalars['String']>;
-};
-
 export type StringFilter = {
   contains?: InputMaybe<Scalars['String']>;
   endsWith?: InputMaybe<Scalars['String']>;
@@ -133,7 +125,7 @@ export type StringFilter = {
 export type User = {
   __typename?: 'User';
   createdAt: Scalars['DateTime'];
-  id: Scalars['ID'];
+  id: Scalars['String'];
   name: Scalars['String'];
 };
 
@@ -156,9 +148,9 @@ export enum UserScalarFieldEnum {
 }
 
 export type UserUpdateInput = {
-  createdAt?: InputMaybe<DateTimeFieldUpdateOperationsInput>;
-  id?: InputMaybe<StringFieldUpdateOperationsInput>;
-  name?: InputMaybe<StringFieldUpdateOperationsInput>;
+  createdAt?: InputMaybe<Scalars['DateTime']>;
+  id?: InputMaybe<Scalars['String']>;
+  name?: InputMaybe<Scalars['String']>;
 };
 
 export type UserWhereInput = {
