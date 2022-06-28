@@ -1,7 +1,7 @@
 import Head from 'next/head';
 import type { FC, ReactNode } from 'react';
 import Footer from '../Footer';
-import Header from '../Header';
+import NavBar from '../NavBar';
 
 type Props = {
   pageTitle: string;
@@ -13,11 +13,9 @@ const Layout: FC<Props> = ({ pageTitle, children }) => (
     <Head>
       <title>{pageTitle}</title>
     </Head>
-    <main>
-      <Header />
-      {children}
-      <Footer />
-    </main>
+    <NavBar />
+    <main>{children}</main>
+    <Footer />
   </div>
 );
 

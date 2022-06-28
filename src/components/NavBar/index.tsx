@@ -1,19 +1,20 @@
+import type { FC } from 'react';
 import { useAuth } from '../../libs/firebase/auth';
+import AuthModal from './components/AuthModal';
 import CurrentUserAvatar from './components/CurrentUserAvatar';
-import LinkList from './components/LinkList';
-import Modal from './components/Modal';
+import Navigation from './components/Navigation';
 
-const Header = () => {
+const NavBar: FC = () => {
   const user = useAuth();
 
   return (
     <div className="grid grid-cols-10 p-6 bg-base shadow-md">
       <div className="flex col-span-8 col-start-2 justify-center items-center space-x-16">
-        <LinkList />
+        <Navigation />
       </div>
-      <div className="text-right">{user ? <CurrentUserAvatar user={user} /> : <Modal />}</div>
+      <div className="text-right">{user ? <CurrentUserAvatar user={user} /> : <AuthModal />}</div>
     </div>
   );
 };
 
-export default Header;
+export default NavBar;

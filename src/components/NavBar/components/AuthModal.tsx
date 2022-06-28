@@ -3,7 +3,7 @@ import type { FC } from 'react';
 import useModal from '../hooks/useModal';
 import PopWindow from './PopWindow';
 
-const Modal: FC = () => {
+const AuthModal: FC = () => {
   const { isModalOpen, openModal } = useModal();
 
   return (
@@ -20,4 +20,4 @@ const Modal: FC = () => {
   );
 };
 
-export default Modal;
+export default AuthModal;
