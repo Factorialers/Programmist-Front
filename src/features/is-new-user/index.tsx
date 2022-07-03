@@ -2,7 +2,7 @@ import type { User } from 'firebase/auth';
 import Error from 'next/error';
 import Router from 'next/router';
 import type { FC } from 'react';
-import Loading from '../../components/Loading';
+import Loading from '../../components/elements/Loading';
 import { useAuth } from '../../libs/firebase/auth';
 import useFindUserByIdHandler from '../../libs/graphql/handler/query/findUsers';
 
