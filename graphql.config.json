@@ -1,0 +1,7 @@
+{
+  "projects": {
+    "programmist-server": {
+      "schema": ["./src/libs/graphql/schema.json"]
+    }
+  }
+}
