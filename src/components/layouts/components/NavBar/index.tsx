@@ -1,5 +1,5 @@
 import type { FC } from 'react';
-import { useAuth } from '../../libs/firebase/auth';
+import { useAuth } from '../../../../libs/firebase/auth';
 import AuthModal from './components/AuthModal';
 import CurrentUserAvatar from './components/CurrentUserAvatar';
 import Navigation from './components/Navigation';

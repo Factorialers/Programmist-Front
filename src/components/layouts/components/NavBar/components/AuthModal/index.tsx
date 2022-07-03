@@ -1,6 +1,6 @@
 /* eslint-disable tailwindcss/no-custom-classname */
 import type { FC } from 'react';
-import useModal from '../hooks/useModal';
+import useModal from '../../hooks/useModal';
 import PopWindow from './PopWindow';
 
 const AuthModal: FC = () => {

@@ -1,6 +1,6 @@
 import ErrorPage from 'next/error';
 import type { FC } from 'react';
-import Layout from '../components/Layout';
+import Layout from '../components/layouts';
 
 const Error404: FC = () => (
   <Layout pageTitle="404 | Not Found">

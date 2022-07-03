@@ -3,7 +3,7 @@ import Router from 'next/router';
 import type { FC } from 'react';
 import { FcGoogle } from 'react-icons/fc';
 import { VscGithub } from 'react-icons/vsc';
-import { loginWithGoogle, loginWithGitHub } from '../../../libs/firebase/auth';
+import { loginWithGoogle, loginWithGitHub } from '../../../../../../libs/firebase/auth';
 
 const SignUp: FC = () => (
   <div>

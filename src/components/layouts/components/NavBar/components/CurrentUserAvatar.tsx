@@ -1,8 +1,8 @@
 /* eslint-disable tailwindcss/no-custom-classname */
 import type { User } from 'firebase/auth';
 import type { FC } from 'react';
-import { logout } from '../../../libs/firebase/auth';
-import Avatar from '../../Avatar';
+import { logout } from '../../../../../libs/firebase/auth';
+import Avatar from '../../../../elements/Avatar';
 
 const CurrentUserAvatar: FC<{ user: User }> = ({ user }) => (
   <div className="daisy-dropdown daisy-dropdown-end daisy-dropdown-hover">
