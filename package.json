@@ -16,6 +16,7 @@
   },
   "dependencies": {
     "@types/react-syntax-highlighter": "^15.5.2",
+    "@urql/devtools": "^2.0.3",
     "@urql/exchange-auth": "^0.1.7",
     "daisyui": "^2.15.4",
     "dotenv": "^16.0.1",
