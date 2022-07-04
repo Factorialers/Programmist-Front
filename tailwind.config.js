@@ -28,9 +28,6 @@ module.exports = {
         appear: 'appear 0.3s',
         disappear: 'disappear 0.3s',
       },
-      height: {
-        '128': '32rem',
-      }
     },
   },
   plugins: [require('daisyui')],

@@ -17,10 +17,6 @@ export type Scalars = {
   DateTime: any;
 };
 
-export type DateTimeFieldUpdateOperationsInput = {
-  set?: InputMaybe<Scalars['DateTime']>;
-};
-
 export type DateTimeFilter = {
   equals?: InputMaybe<Scalars['DateTime']>;
   gt?: InputMaybe<Scalars['DateTime']>;
@@ -84,8 +80,6 @@ export type Query = {
   __typename?: 'Query';
   findUserById?: Maybe<User>;
   findUsers: Array<User>;
-  getAllUsers: Array<User>;
-  getAuthorizationHeader: Scalars['String'];
 };
 
 
@@ -113,10 +107,6 @@ export enum SortOrder {
   Desc = 'desc'
 }
 
-export type StringFieldUpdateOperationsInput = {
-  set?: InputMaybe<Scalars['String']>;
-};
-
 export type StringFilter = {
   contains?: InputMaybe<Scalars['String']>;
   endsWith?: InputMaybe<Scalars['String']>;
@@ -134,45 +124,39 @@ export type StringFilter = {
 
 export type User = {
   __typename?: 'User';
-  avatarURL: Scalars['String'];
   createdAt: Scalars['DateTime'];
-  id: Scalars['ID'];
+  id: Scalars['String'];
   name: Scalars['String'];
 };
 
 export type UserCreateInput = {
-  avatarURL: Scalars['String'];
   createdAt?: InputMaybe<Scalars['DateTime']>;
-  id?: InputMaybe<Scalars['String']>;
+  id: Scalars['String'];
   name: Scalars['String'];
 };
 
 export type UserOrderByWithRelationInput = {
-  avatarURL?: InputMaybe<SortOrder>;
   createdAt?: InputMaybe<SortOrder>;
   id?: InputMaybe<SortOrder>;
   name?: InputMaybe<SortOrder>;
 };
 
 export enum UserScalarFieldEnum {
-  AvatarUrl = 'avatarURL',
   CreatedAt = 'createdAt',
   Id = 'id',
   Name = 'name'
 }
 
 export type UserUpdateInput = {
-  avatarURL?: InputMaybe<StringFieldUpdateOperationsInput>;
-  createdAt?: InputMaybe<DateTimeFieldUpdateOperationsInput>;
-  id?: InputMaybe<StringFieldUpdateOperationsInput>;
-  name?: InputMaybe<StringFieldUpdateOperationsInput>;
+  createdAt?: InputMaybe<Scalars['DateTime']>;
+  id?: InputMaybe<Scalars['String']>;
+  name?: InputMaybe<Scalars['String']>;
 };
 
 export type UserWhereInput = {
   AND?: InputMaybe<Array<UserWhereInput>>;
   NOT?: InputMaybe<Array<UserWhereInput>>;
   OR?: InputMaybe<Array<UserWhereInput>>;
-  avatarURL?: InputMaybe<StringFilter>;
   createdAt?: InputMaybe<DateTimeFilter>;
   id?: InputMaybe<StringFilter>;
   name?: InputMaybe<StringFilter>;

@@ -1,10 +1,10 @@
-import { useFindUsersQuery } from '../../generated/graphql';
+import { useFindUserByIdQuery } from '../../generated/graphql';
 
-const useFindUserByIdHandler = () => {
-  const [{ data, fetching }] = useFindUsersQuery();
-  const foundUsers = data?.findUsers;
+const useFindUserByIdHandler = (id: string) => {
+  const [{ data, fetching }] = useFindUserByIdQuery({ variables: { where: { id } } });
+  const foundUser = data?.findUserById;
 
-  return { foundUsers, fetching };
+  return { foundUser, fetching };
 };
 
 export default useFindUserByIdHandler;

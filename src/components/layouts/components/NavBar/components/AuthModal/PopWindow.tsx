@@ -1,6 +1,6 @@
 /* eslint-disable tailwindcss/no-custom-classname */
 import { FC, useState } from 'react';
-import Toggle from '../../Toggle';
+import Toggle from '../../../../../elements/Toggle';
 import SignIn from './SignIn';
 import SignUp from './SignUp';
 

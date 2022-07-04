@@ -3,7 +3,7 @@ import Router from 'next/router';
 import type { FC } from 'react';
 import { FcGoogle } from 'react-icons/fc';
 import { VscGithub } from 'react-icons/vsc';
-import { loginWithGoogle, loginWithGitHub } from '../../../libs/firebase/auth';
+import { loginWithGoogle, loginWithGitHub } from '../../../../../../libs/firebase/auth';
 
 const SignUp: FC = () => (
   <div>
@@ -12,7 +12,7 @@ const SignUp: FC = () => (
       className="mx-5 mb-5 font-semibold text-neutral hover:text-primary normal-case bg-primary hover:bg-neutral border-none shadow-lg daisy-btn daisy-btn-wide"
       onClick={async () => {
         await loginWithGoogle();
-        Router.push('/new-user');
+        Router.push('/auth/is-new-user');
       }}
     >
       <div className="mr-3">
@@ -25,7 +25,7 @@ const SignUp: FC = () => (
       className="mx-5 mb-5 font-semibold text-neutral hover:text-primary normal-case bg-primary hover:bg-neutral border-none shadow-lg daisy-btn daisy-btn-wide"
       onClick={async () => {
         await loginWithGitHub();
-        Router.push('/new-user');
+        Router.push('/auth/is-new-user');
       }}
     >
       <div className="mr-3">
