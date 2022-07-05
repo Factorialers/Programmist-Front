@@ -1,85 +1,75 @@
-import type { FC } from 'react';
-import { useState, useCallback } from 'react';
-import { BiChevronRight, BiChevronsRight, BiChevronLeft, BiChevronsLeft } from 'react-icons/bi';
-import { TbPhoto } from 'react-icons/tb';
-import Export from './export';
+/* eslint-disable */
+import EasyMDE from 'easymde';
+import React, { useCallback, useState, useMemo } from 'react';
+import 'easymde/dist/easymde.min.css';
+import ReactDOMServer from 'react-dom/server';
+import ReactMarkdown from 'react-markdown';
+import { SimpleMdeReact } from 'react-simplemde-editor';
+import SyntaxHighlighter from 'react-syntax-highlighter';
+import { dark } from 'react-syntax-highlighter/dist/cjs/styles/hljs';
+import remarkGfm from 'remark-gfm';
+import type { CodeComponent, ReactMarkdownNames, HeadingComponent } from 'react-markdown/lib/ast-to-react';
 
-const EditMd: FC = () => {
-  const [text, setText] = useState('');
-  const [toggle, setToggle] = useState<number>(1);
-  const upToggle = useCallback((x: number) => setToggle(toggle + x), [toggle]);
-  const downToggle = useCallback((x: number) => setToggle(toggle - x), [toggle]);
-  const TextChange = (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>): void => {
-    setText(event.target.value);
+const CodeBlock: CodeComponent | ReactMarkdownNames = ({ inline, className, children, ...props }) => {
+  const match = /language-(\w+)/.exec(className || '');
+  return !inline && match ? (
+    <SyntaxHighlighter style={dark} language={match[1]} PreTag="div">
+      {String(children).replace(/\n$/, '')}
+    </SyntaxHighlighter>
+  ) : (
+    <code className={className} {...props}>
+      {children}
+    </code>
+  );
+};
+const H1: HeadingComponent | ReactMarkdownNames = ({ node, ...props }) => (
+  <div className="text-2xl border-b-2 border-gray-300 mb-3 py-2">{props.children}</div>
+);
+export const Editor = () => {
+  const components = {
+    code: CodeBlock,
+    h1: H1,
   };
+  const [value, setValue] = useState('Initial value');
+  const [isSide, setSide] = useState<boolean>(false);
+  const getInstance = (instance: EasyMDE) => {
+    if (!instance) return;
+    if (!isSide) {
+      EasyMDE.toggleSideBySide(instance);
+      setSide(true);
+    }
+  };
+  const customOptions = useMemo(() => {
+    return {
+      syncSideBySidePreviewScroll: true,
+      autofocus: true,
+      spellChecker: false,
+      setPreview: true,
+      sideBySideFullscreen: false,
+      toolbar: false,
+      previewRender(markdownPlaintext: string) {
+        return ReactDOMServer.renderToString(
+          <ReactMarkdown remarkPlugins={[remarkGfm]} components={components}>
+            {markdownPlaintext}
+          </ReactMarkdown>,
+        );
+      },
+    };
+  }, []);
+  const onChange = useCallback((str: string) => {
+    setValue(str);
+  }, []);
   return (
     <div>
-      <div className="mt-4 mb-2 w-full">
+      <div className="mb-5">
         <input
-          className="py-2 px-4 w-full font-bold leading-tight text-gray-700focus:bg-white rounded border-2 border-gray-200 focus:border-purple-500 focus:outline-none appearance-none"
-          id="inline-full-name"
+          className="py-2 px-4 w-full leading-tight text-gray-700  focus:bg-white rounded border-2 border-gray-200 focus:border-blue-500 focus:outline-none "
           type="text"
-          placeholder="タイトル"
         />
       </div>
-      <div className="grid grid-cols-2  mb-5">
-        {toggle === 0 && (
-          <div className="col-span-2">
-            <div className="flex h-10 border border-gray-300 ">
-              <BiChevronRight size={40} onClick={() => upToggle(1)} />
-              <BiChevronsRight size={40} onClick={() => upToggle(2)} />
-            </div>
-            <textarea
-              className="block py-1.5	px-3	m-0	w-full	h-128	text-gray-700 focus:text-gray-700	bg-clip-padding 	bg-white	border	border-gray-300	focus:border-blue-600	border-solid focus:outline-none"
-              id="exampleFormControlTextarea1"
-              rows={20}
-              value={text}
-              placeholder="your markdown"
-              onChange={(e) => TextChange(e)}
-            />
-          </div>
-        )}
-
-        {toggle === 1 && (
-          <div>
-            <div className="h-10 border-t border-gray-300">
-              <TbPhoto size={40} className="mr-3 ml-auto" />
-            </div>
-            <textarea
-              className="block py-1.5	px-3	m-0	w-full	h-128	text-gray-700 focus:text-gray-700	bg-clip-padding 	bg-white	border	border-gray-300	focus:border-blue-600	border-solid focus:outline-none"
-              id="exampleFormControlTextarea1"
-              rows={20}
-              value={text}
-              placeholder="your markdown"
-              onChange={(e) => TextChange(e)}
-            />
-          </div>
-        )}
-        {toggle === 1 && (
-          <div className="border border-gray-300">
-            <div className="flex h-10 border-b border-gray-300">
-              <BiChevronLeft size={40} onClick={() => downToggle(1)} />
-              <BiChevronRight size={40} onClick={() => upToggle(1)} />
-            </div>
-            <div className="overflow-x-hidden overflow-y-scroll py-1.5 px-3 h-128">
-              <Export str={text} />
-            </div>
-          </div>
-        )}
-
-        {toggle === 2 && (
-          <div className="col-span-2 py-1.5 px-3 border border-gray-300">
-            <div className="flex h-10 border-b border-gray-300">
-              <BiChevronLeft size={40} onClick={() => downToggle(1)} />
-              <BiChevronsLeft size={40} onClick={() => downToggle(2)} />
-            </div>
-            <div className="overflow-x-hidden overflow-y-scroll py-1.5 px-3 h-128">
-              <Export str={text} />
-            </div>
-          </div>
-        )}
+      <div className="my-10">
+        <SimpleMdeReact value={value} onChange={onChange} options={customOptions} getMdeInstance={getInstance} />
       </div>
     </div>
   );
 };
-export default EditMd;
