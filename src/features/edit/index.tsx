@@ -1,6 +1,6 @@
 /* eslint-disable */
-import EasyMDE from 'easymde';
-import React, { useCallback, useState, useMemo } from 'react';
+import EasyMDE, { Options } from 'easymde';
+import React, { useCallback, useState, useMemo, ClipboardEvent } from 'react';
 import 'easymde/dist/easymde.min.css';
 import ReactDOMServer from 'react-dom/server';
 import ReactMarkdown from 'react-markdown';
@@ -9,6 +9,8 @@ import SyntaxHighlighter from 'react-syntax-highlighter';
 import { dark } from 'react-syntax-highlighter/dist/cjs/styles/hljs';
 import remarkGfm from 'remark-gfm';
 import type { CodeComponent, ReactMarkdownNames, HeadingComponent } from 'react-markdown/lib/ast-to-react';
+import FileUP from '../../libs/firebase/storage';
+import { async } from '@firebase/util';
 
 const CodeBlock: CodeComponent | ReactMarkdownNames = ({ inline, className, children, ...props }) => {
   const match = /language-(\w+)/.exec(className || '');
@@ -32,6 +34,18 @@ export const Editor = () => {
   };
   const [value, setValue] = useState('Initial value');
   const [isSide, setSide] = useState<boolean>(false);
+  const onChange = useCallback((str: string) => {
+    setValue(str);
+  }, []);
+  const addURL = useCallback(() => {
+    setValue(value + `hoge`);
+  }, []);
+  const onSucess = () => {
+    alert('sucess');
+  };
+  const onError = () => {
+    alert('error');
+  };
   const getInstance = (instance: EasyMDE) => {
     if (!instance) return;
     if (!isSide) {
@@ -39,14 +53,24 @@ export const Editor = () => {
       setSide(true);
     }
   };
-  const customOptions = useMemo(() => {
+  const onSuccess=(url: string) =>{
+
+  }
+  const customOptions = useMemo((): Options => {
     return {
+      uploadImage: true,
       syncSideBySidePreviewScroll: true,
       autofocus: true,
       spellChecker: false,
-      setPreview: true,
+      // setPreview: true,
       sideBySideFullscreen: false,
       toolbar: false,
+       imageUploadFunction: async(files,onSuccess,onError) => {
+        const url=await FileUP(files);
+        if(url){
+          onSuccess(url);
+        }
+      },
       previewRender(markdownPlaintext: string) {
         return ReactDOMServer.renderToString(
           <ReactMarkdown remarkPlugins={[remarkGfm]} components={components}>
@@ -55,9 +79,6 @@ export const Editor = () => {
         );
       },
     };
-  }, []);
-  const onChange = useCallback((str: string) => {
-    setValue(str);
   }, []);
   return (
     <div>

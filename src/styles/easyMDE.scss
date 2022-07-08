@@ -1,7 +1,9 @@
 .CodeMirror-scroll,
 .CodeMirror-wrap {
-  max-height: 320px;
+  max-height: 500px;
+  min-height: 500px;
 }
 .editor-preview-side{
-  max-height: 320px;
+  max-height: 500px;
+  min-height: 500px;
 }
