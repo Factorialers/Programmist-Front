@@ -1,10 +1,10 @@
 import type { NextPage } from 'next';
 import Layout from '../../components/layouts';
-import EditMd from '../../features/edit';
+import Editor from '../../features/edit/export';
 
 const EditPage: NextPage = () => (
   <Layout pageTitle="作品情報編集 | Programmist">
-    <EditMd />
+    <Editor />
   </Layout>
 );
 
