@@ -4,7 +4,7 @@ import { RecoilRoot } from 'recoil';
 import 'tailwindcss/tailwind.css';
 import { Provider } from 'urql';
 import urqlClient from '../libs/urql';
-import '../styles/globals.scss';
+import '../styles/global.scss';
 
 const CustomApp: FC<AppProps> = ({ Component, pageProps }) => (
   <RecoilRoot>
