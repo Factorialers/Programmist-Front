@@ -1,11 +1,11 @@
 import type { NextPage } from 'next';
-import Layout from '../../components/layouts';
-import EditMd from '../../features/edit';
+import LayoutWithOnlyHead from '../../components/layouts/LayoutWithOnlyHead';
+import Edit from '../../features/edit';
 
 const EditPage: NextPage = () => (
-  <Layout pageTitle="作品情報編集 | Programmist">
-    <EditMd />
-  </Layout>
+  <LayoutWithOnlyHead pageTitle="作品情報編集 | Programmist" className="bg-primary">
+    <Edit />
+  </LayoutWithOnlyHead>
 );
 
 export default EditPage;
