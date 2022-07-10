@@ -24,6 +24,7 @@
     "@urql/exchange-auth": "^0.1.7",
     "daisyui": "^2.15.4",
     "dotenv": "^16.0.1",
+    "easymde": "^2.16.1",
     "firebase": "^9.8.3",
     "graphql-tag": "^2.12.6",
     "next": "12.1.6",
