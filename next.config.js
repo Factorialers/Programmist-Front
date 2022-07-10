@@ -1,7 +1,9 @@
+/** @type {import('next').NextConfig} */
+const removeImports = require('next-remove-imports');
 require('dotenv').config();
 
-/** @type {import('next').NextConfig} */
-module.exports = {
+module.exports = removeImports({
+  reactStrictMode: true,
   env: {
     NEXT_PUBLIC_GRAPHQL_ENDPOINT: process.env.NEXT_PUBLIC_GRAPHQL_ENDPOINT,
     NEXT_PUBLIC_GRAPHQL_ENDPOINT_DEVELOP: process.env.NEXT_PUBLIC_GRAPHQL_ENDPOINT_DEVELOP,
@@ -19,10 +21,4 @@ module.exports = {
   images: {
     domains: ['googleusercontent.com'],
   },
-};
-
-const nextConfig = {
-  reactStrictMode: true,
-};
-
-module.exports = nextConfig;
+});
