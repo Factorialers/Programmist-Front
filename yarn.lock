@@ -7398,7 +7398,7 @@ eslint-plugin-storybook@^0.5.13:
     "@typescript-eslint/experimental-utils" "^5.3.0"
     requireindex "^1.1.0"
 
-eslint-plugin-tailwindcss@^3.5.0:
+eslint-plugin-tailwindcss@^3.6.0:
   version "3.6.0"
   resolved "https://registry.yarnpkg.com/eslint-plugin-tailwindcss/-/eslint-plugin-tailwindcss-3.6.0.tgz#b29605a53b5c27b7e74986ca7fcc0c6bdc435ad3"
   integrity sha512-gWLGNWHuhh5ngwkJ2sgSByanpRw2s5GdrM2ff2/w8Ho2mWh2MyGvpnFZpL4b0XT/C0WF9zlq57+vFHJOeFhMkg==
