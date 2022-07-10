@@ -34,7 +34,7 @@ const Edit: FC = () => {
         <span>
           あなたの作品の説明を記述しましょう。説明にはMarkdown記法を使用できます。より詳しい記法については、
           <Link href="/">
-            <a className="underline text-accent-focus">こちら</a>
+            <a className="text-accent-focus underline">こちら</a>
           </Link>
           を参照してください。
         </span>

@@ -18,11 +18,11 @@ const EditLayout: FC<Props> = ({ stepTitle, stepContent, setPrevEditState, setNe
   return (
     <div>
       <Header />
-      <div className="m-8 text-3xl font-semibold text-center text-primary-content">
+      <div className="m-8 text-center text-3xl font-semibold text-primary-content">
         <div className="flex justify-center">
           {stepTitle}
           <button type="button">
-            <label htmlFor="arrow" className="mt-[2px] daisy-swap daisy-swap-rotate">
+            <label htmlFor="arrow" className="daisy-swap daisy-swap-rotate mt-[2px]">
               <input
                 id="arrow"
                 type="checkbox"
@@ -39,17 +39,17 @@ const EditLayout: FC<Props> = ({ stepTitle, stepContent, setPrevEditState, setNe
             </label>
           </button>
         </div>
-        {isOpen ? <div className="inline-block m-3 w-5/12 text-lg text-center animate-appear">{stepContent} </div> : ''}
+        {isOpen ? <div className="m-3 inline-block w-5/12 animate-appear text-center text-lg">{stepContent} </div> : ''}
       </div>
       <div>{children}</div>
-      <div className="grid grid-cols-10 m-10">
+      <div className="m-10 grid grid-cols-10">
         <button
           type="button"
           onClick={() => {
             setPrevEditState();
             setIsOpen(false);
           }}
-          className="col-start-3 shadow-md daisy-btn daisy-btn-primary"
+          className="daisy-btn daisy-btn-primary col-start-3 shadow-md"
         >
           <BsFillArrowLeftCircleFill className="mr-2" />
           prev
@@ -60,7 +60,7 @@ const EditLayout: FC<Props> = ({ stepTitle, stepContent, setPrevEditState, setNe
             setNextEditState();
             setIsOpen(false);
           }}
-          className="col-start-8 shadow-md daisy-btn daisy-btn-primary"
+          className="daisy-btn daisy-btn-primary col-start-8 shadow-md"
         >
           next
           <BsFillArrowRightCircleFill className="ml-2" />

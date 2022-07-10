@@ -6,7 +6,7 @@ const Navigation: FC = () => {
   const navList = NavLinks.map((navLink) => (
     <li key={navLink.id}>
       <Link href={navLink.link}>
-        <a className="font-medium tracking-wide text-gray-700 hover:text-gray-300 transition-colors duration-200">{navLink.node}</a>
+        <a className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-gray-300">{navLink.node}</a>
       </Link>
     </li>
   ));

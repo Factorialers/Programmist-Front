@@ -3,7 +3,7 @@ import Layout from '../components/layouts';
 
 const HomePage: NextPage = () => (
   <Layout pageTitle="Programmist">
-    <div className="my-80 font-serif text-5xl text-center underline">Hello, Programmist World!</div>
+    <div className="my-80 text-center font-serif text-5xl underline">Hello, Programmist World!</div>
   </Layout>
 );
 

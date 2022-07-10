@@ -12,12 +12,12 @@ const DropZone: FC<{ onDrop: (acceptedFiles: File[]) => void; zoneContent?: stri
     <div className="w-96" {...getRootProps()}>
       <label
         htmlFor="file_uploader"
-        className={`flex justify-center px-4 w-full h-40 bg-base rounded-2xl border-2 ${
+        className={`flex h-40 w-full justify-center rounded-2xl border-2 bg-base px-4 ${
           isDragActive ? 'border-secondary' : 'border-gray-300'
-        } border-dashed focus:outline-none cursor-pointer`}
+        } cursor-pointer border-dashed focus:outline-none`}
       >
-        <div className="flex flex-col justify-center items-center">
-          <span className="mt-5 font-semibold text-center">
+        <div className="flex flex-col items-center justify-center">
+          <span className="mt-5 text-center font-semibold">
             {zoneContent}
             <br />
             or ...
@@ -27,7 +27,7 @@ const DropZone: FC<{ onDrop: (acceptedFiles: File[]) => void; zoneContent?: stri
             onClick={() => {
               document.getElementById('file_uploader')?.click();
             }}
-            className="mt-3 mb-5 shadow-md daisy-btn daisy-btn-primary"
+            className="daisy-btn daisy-btn-primary mt-3 mb-5 shadow-md"
           >
             {btnText}
           </button>

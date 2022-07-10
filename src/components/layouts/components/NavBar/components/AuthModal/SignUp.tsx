@@ -9,7 +9,7 @@ const SignUp: FC = () => (
   <div>
     <button
       type="button"
-      className="mx-5 mb-5 font-semibold text-neutral hover:text-primary normal-case bg-primary hover:bg-neutral border-none shadow-lg daisy-btn daisy-btn-wide"
+      className="daisy-btn daisy-btn-wide mx-5 mb-5 border-none bg-primary font-semibold normal-case text-neutral shadow-lg hover:bg-neutral hover:text-primary"
       onClick={async () => {
         await loginWithGoogle();
         Router.push('/auth/is-new-user');
@@ -22,7 +22,7 @@ const SignUp: FC = () => (
     </button>
     <button
       type="button"
-      className="mx-5 mb-5 font-semibold text-neutral hover:text-primary normal-case bg-primary hover:bg-neutral border-none shadow-lg daisy-btn daisy-btn-wide"
+      className="daisy-btn daisy-btn-wide mx-5 mb-5 border-none bg-primary font-semibold normal-case text-neutral shadow-lg hover:bg-neutral hover:text-primary"
       onClick={async () => {
         await loginWithGitHub();
         Router.push('/auth/is-new-user');

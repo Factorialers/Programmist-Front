@@ -8,8 +8,8 @@ const NavBar: FC = () => {
   const user = useAuth();
 
   return (
-    <div className="grid grid-cols-10 p-6 bg-base shadow-md">
-      <div className="flex col-span-8 col-start-2 justify-center items-center space-x-16">
+    <div className="grid grid-cols-10 bg-base p-6 shadow-md">
+      <div className="col-span-8 col-start-2 flex items-center justify-center space-x-16">
         <Navigation />
       </div>
       <div className="text-right">{user ? <CurrentUserAvatar user={user} /> : <AuthModal />}</div>
