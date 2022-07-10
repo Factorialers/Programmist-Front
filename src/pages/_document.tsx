@@ -2,11 +2,11 @@ import { Head, Html, Main, NextScript } from 'next/document';
 import type { FC } from 'react';
 
 const CustomDocument: FC = () => (
-  <Html lang="ja" data-theme="programmist">
+  <Html lang="ja" data-theme="programmist" className="h-full">
     <Head>
       <link rel="icon" href="/favicon.svg" />
     </Head>
-    <body>
+    <body className="h-full">
       <Main />
       <NextScript />
     </body>
