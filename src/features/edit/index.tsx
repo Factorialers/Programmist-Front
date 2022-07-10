@@ -1,85 +1,55 @@
-import type { FC } from 'react';
-import { useState, useCallback } from 'react';
-import { BiChevronRight, BiChevronsRight, BiChevronLeft, BiChevronsLeft } from 'react-icons/bi';
-import { TbPhoto } from 'react-icons/tb';
-import Export from './export';
+/* eslint-disable tailwindcss/no-custom-classname */
+import dynamic from 'next/dynamic';
+import Link from 'next/link';
+import type { ReactNode, FC, ComponentType } from 'react';
+import Loading from '../../components/elements/Loading';
+import EditLayout from './components/EditLayout/index';
+import GetLogo from './components/GetLogo/index';
+import GetSourceCode from './components/GetSourceCode';
+import useStateTransition from './hooks/useStateTransition';
 
-const EditMd: FC = () => {
-  const [text, setText] = useState('');
-  const [toggle, setToggle] = useState<number>(1);
-  const upToggle = useCallback((x: number) => setToggle(toggle + x), [toggle]);
-  const downToggle = useCallback((x: number) => setToggle(toggle - x), [toggle]);
-  const TextChange = (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>): void => {
-    setText(event.target.value);
-  };
+const MdEditor = dynamic(import('./components/Editor'), { ssr: false, loading: () => <Loading size={150} className="bg-base" /> });
+
+const Edit: FC = () => {
+  const [editState, , setPrevEditState, setNextEditState] = useStateTransition('getLogo');
+
+  let ResComponent: FC | ComponentType;
+  let stepTitle: string;
+  let stepContent: ReactNode;
+  switch (editState) {
+    case 'getLogo':
+      ResComponent = GetLogo;
+      stepTitle = 'STEP 1. 作品のロゴを設定する';
+      stepContent = 'あなたの作品のロゴを設定しましょう。ここで設定した画像は、SNS等で表示できるOGPに自動で組み込まれます。';
+      break;
+    case 'getSourceCode':
+      ResComponent = GetSourceCode;
+      stepTitle = 'STEP 2. 作品のソースコードを設定する';
+      stepContent = 'あなたの作品を構成するソースコードを設定しましょう。もしソースコードを公開したくない場合は、この工程を省略することができます。';
+      break;
+    case 'edit':
+      ResComponent = MdEditor;
+      stepTitle = 'STEP 3. 作品の説明を記述する';
+      stepContent = (
+        <span>
+          あなたの作品の説明を記述しましょう。説明にはMarkdown記法を使用できます。より詳しい記法については、
+          <Link href="/">
+            <a className="underline text-accent-focus">こちら</a>
+          </Link>
+          を参照してください。
+        </span>
+      );
+      break;
+    default:
+      throw new Error('不明なStateが割り当てられました。');
+      break;
+  }
+
   return (
-    <div>
-      <div className="mt-4 mb-2 w-full">
-        <input
-          className="py-2 px-4 w-full font-bold leading-tight text-gray-700focus:bg-white rounded border-2 border-gray-200 focus:border-purple-500 focus:outline-none appearance-none"
-          id="inline-full-name"
-          type="text"
-          placeholder="タイトル"
-        />
-      </div>
-      <div className="grid grid-cols-2  mb-5">
-        {toggle === 0 && (
-          <div className="col-span-2">
-            <div className="flex h-10 border border-gray-300 ">
-              <BiChevronRight size={40} onClick={() => upToggle(1)} />
-              <BiChevronsRight size={40} onClick={() => upToggle(2)} />
-            </div>
-            <textarea
-              className="block py-1.5	px-3	m-0	w-full	h-128	text-gray-700 focus:text-gray-700	bg-clip-padding 	bg-white	border	border-gray-300	focus:border-blue-600	border-solid focus:outline-none"
-              id="exampleFormControlTextarea1"
-              rows={20}
-              value={text}
-              placeholder="your markdown"
-              onChange={(e) => TextChange(e)}
-            />
-          </div>
-        )}
-
-        {toggle === 1 && (
-          <div>
-            <div className="h-10 border-t border-gray-300">
-              <TbPhoto size={40} className="mr-3 ml-auto" />
-            </div>
-            <textarea
-              className="block py-1.5	px-3	m-0	w-full	h-128	text-gray-700 focus:text-gray-700	bg-clip-padding 	bg-white	border	border-gray-300	focus:border-blue-600	border-solid focus:outline-none"
-              id="exampleFormControlTextarea1"
-              rows={20}
-              value={text}
-              placeholder="your markdown"
-              onChange={(e) => TextChange(e)}
-            />
-          </div>
-        )}
-        {toggle === 1 && (
-          <div className="border border-gray-300">
-            <div className="flex h-10 border-b border-gray-300">
-              <BiChevronLeft size={40} onClick={() => downToggle(1)} />
-              <BiChevronRight size={40} onClick={() => upToggle(1)} />
-            </div>
-            <div className="overflow-x-hidden overflow-y-scroll py-1.5 px-3 h-128">
-              <Export str={text} />
-            </div>
-          </div>
-        )}
-
-        {toggle === 2 && (
-          <div className="col-span-2 py-1.5 px-3 border border-gray-300">
-            <div className="flex h-10 border-b border-gray-300">
-              <BiChevronLeft size={40} onClick={() => downToggle(1)} />
-              <BiChevronsLeft size={40} onClick={() => downToggle(2)} />
-            </div>
-            <div className="overflow-x-hidden overflow-y-scroll py-1.5 px-3 h-128">
-              <Export str={text} />
-            </div>
-          </div>
-        )}
-      </div>
-    </div>
+    <EditLayout stepTitle={stepTitle} stepContent={stepContent} setPrevEditState={setPrevEditState} setNextEditState={setNextEditState}>
+      <ResComponent />
+    </EditLayout>
   );
 };
-export default EditMd;
+
+export default Edit;
