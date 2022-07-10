@@ -2,7 +2,7 @@
 import Router from 'next/router';
 import type { FC } from 'react';
 import { FiSend } from 'react-icons/fi';
-import useCreateUserMutationHandler from '../../../libs/graphql/handler/mutation/crateUser';
+import useCreateUserMutationHandler from '../../../../../libs/graphql/handler/mutation/crateUser';
 
 const Submit: FC<{ isAble: boolean; id: string; name: string }> = ({ isAble, id, name }) => {
   const { fetching, executeMutation } = useCreateUserMutationHandler();

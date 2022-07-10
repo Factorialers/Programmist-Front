@@ -1,7 +1,7 @@
 import Error from 'next/error';
 import Image from 'next/image';
 import { FC, useState } from 'react';
-import { useAuth } from '../../libs/firebase/auth';
+import { useAuth } from '../../../libs/firebase/auth';
 import Submit from './components/Submit';
 
 const NewUser: FC = () => {
