@@ -1,20 +1,23 @@
 /* eslint-disable tailwindcss/no-custom-classname */
-import type { User } from 'firebase/auth';
 import Image from 'next/image';
 import type { FC } from 'react';
 
-const Avatar: FC<{ size: number; user: User }> = ({ size, user }) => (
+const Avatar: FC<{ size: number; photoURL: string | null; altIconContent?: string }> = ({ size, photoURL, altIconContent }) => (
   <div>
-    <div className="daisy-avatar daisy-placeholder">
-      <div className="bg-neutral-focus text-neutral-content daisy-mask daisy-mask-squircle" style={{ width: size }}>
-        {user.photoURL ? (
-          <Image loader={() => `${user.photoURL}?w=${size}`} src={user.photoURL} width={size} height={size} alt="avatar" />
+    <div className="daisy-placeholder daisy-avatar">
+      <div className="daisy-mask daisy-mask-squircle bg-neutral-focus text-neutral-content" style={{ width: size }}>
+        {photoURL ? (
+          <Image loader={() => `${photoURL}?w=${size}`} src={photoURL} width={size} height={size} alt="avatar" />
         ) : (
-          <span className="text-3xl">{user.uid.slice(0, 2)}</span>
+          <span className="text-3xl">{altIconContent?.slice(0, 3)}</span>
         )}
       </div>
     </div>
   </div>
 );
+
+Avatar.defaultProps = {
+  altIconContent: '^_^',
+};
 
 export default Avatar;

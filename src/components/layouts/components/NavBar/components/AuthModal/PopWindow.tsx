@@ -11,7 +11,7 @@ const PopWindow: FC = () => {
     <div
       id="pop_window"
       role="button"
-      className="flex absolute inset-0 m-auto w-80 h-64 text-center bg-base rounded-lg shadow-xl drop-shadow animate-appear "
+      className="absolute inset-0 m-auto flex h-64 w-80 animate-appear rounded-lg bg-base text-center shadow-xl drop-shadow "
       onClick={(event) => {
         event.stopPropagation();
       }}

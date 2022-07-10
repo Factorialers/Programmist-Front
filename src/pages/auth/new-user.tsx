@@ -1,6 +1,11 @@
 import type { NextPage } from 'next';
-import NewUser from '../../features/new-user';
+import LayoutWithOnlyHead from '../../components/layouts/LayoutWithOnlyHead';
+import NewUser from '../../features/auth/new-user';
 
-const NewUserPage: NextPage = () => <NewUser />;
+const NewUserPage: NextPage = () => (
+  <LayoutWithOnlyHead pageTitle="サインアップ | Programmist">
+    <NewUser />
+  </LayoutWithOnlyHead>
+);
 
 export default NewUserPage;

@@ -10,7 +10,7 @@ const AuthModal: FC = () => {
     <div>
       <button
         type="button"
-        className="py-3 px-5 font-bold text-accent bg-primary rounded outline-none focus:outline-none shadow-lg transition-all duration-150 ease-out active:scale-90"
+        className="rounded bg-primary py-3 px-5 font-bold text-accent shadow-lg outline-none transition-all duration-150 ease-out focus:outline-none active:scale-90"
         onClick={(event) => openModal(event)}
       >
         Sign In

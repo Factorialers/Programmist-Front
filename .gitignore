@@ -36,3 +36,6 @@ yarn-error.log*
 
 # VScode workspace
 *.code-workspace
+
+# storybook static 
+.storybook/static/

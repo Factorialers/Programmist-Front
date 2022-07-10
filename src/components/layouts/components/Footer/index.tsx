@@ -4,7 +4,7 @@ import type { FC } from 'react';
 import { BsTwitter, BsFacebook, BsGithub } from 'react-icons/bs';
 
 const Footer: FC = () => (
-  <footer className="p-10 bg-primary daisy-footer daisy-footer-center text-primary-content">
+  <footer className="daisy-footer daisy-footer-center bg-primary p-10 text-primary-content">
     <div>
       <Image src="/favicon.svg" width="300" height="300" alt="favicon" />
       <p className="mb-3 text-5xl font-bold">Programmist</p>

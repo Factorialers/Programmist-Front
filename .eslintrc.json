@@ -9,6 +9,7 @@
     "eslint:recommended",
     "prettier",
     "plugin:@typescript-eslint/recommended",
+    "plugin:storybook/recommended",
     "next",
     "plugin:react/recommended",
     "plugin:tailwindcss/recommended"

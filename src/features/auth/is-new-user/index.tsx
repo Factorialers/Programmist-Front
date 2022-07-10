@@ -2,9 +2,9 @@ import type { User } from 'firebase/auth';
 import Error from 'next/error';
 import Router from 'next/router';
 import type { FC } from 'react';
-import Loading from '../../components/elements/Loading';
-import { useAuth } from '../../libs/firebase/auth';
-import useFindUserByIdHandler from '../../libs/graphql/handler/query/findUsers';
+import Loading from '../../../components/elements/Loading';
+import { useAuth } from '../../../libs/firebase/auth';
+import useFindUserByIdHandler from '../../../libs/graphql/handler/query/findUsers';
 
 const FindUserById: FC<{ user: User }> = ({ user }) => {
   const { foundUser, fetching } = useFindUserByIdHandler(user.uid);
@@ -18,7 +18,7 @@ const FindUserById: FC<{ user: User }> = ({ user }) => {
   }
 
   return (
-    <div className="flex flex-col justify-center items-center m-40">
+    <div className="m-40 flex flex-col items-center justify-center">
       <Loading size={150} />
     </div>
   );

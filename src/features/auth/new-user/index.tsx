@@ -1,7 +1,7 @@
 import Error from 'next/error';
 import Image from 'next/image';
 import { FC, useState } from 'react';
-import { useAuth } from '../../libs/firebase/auth';
+import { useAuth } from '../../../libs/firebase/auth';
 import Submit from './components/Submit';
 
 const NewUser: FC = () => {
@@ -14,7 +14,7 @@ const NewUser: FC = () => {
   }
 
   return (
-    <div className="flex flex-col justify-center items-center">
+    <div className="flex flex-col items-center justify-center">
       <div className="m-8">
         <Image src="/favicon.svg" width="300" height="300" alt="favicon" />
       </div>
@@ -22,7 +22,7 @@ const NewUser: FC = () => {
       <input
         type="text"
         placeholder="your nickname"
-        className="mb-5 w-1/3 h-10 border-b-2 focus:border-primary outline-none duration-300"
+        className="mb-5 h-10 w-1/3 border-b-2 outline-none duration-300 focus:border-primary"
         value={userName}
         onChange={(event) => setUserName(event.target.value)}
       />

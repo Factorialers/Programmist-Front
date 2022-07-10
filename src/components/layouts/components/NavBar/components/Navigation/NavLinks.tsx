@@ -18,7 +18,7 @@ const Logo = (
   <li key="logo">
     <Link href="/">
       <a className="inline-flex items-center">
-        <span className="ml-2 text-xl font-bold tracking-wide text-gray-800 uppercase">Programmist</span>
+        <span className="ml-2 text-xl font-bold uppercase tracking-wide text-gray-800">Programmist</span>
       </a>
     </Link>
   </li>
