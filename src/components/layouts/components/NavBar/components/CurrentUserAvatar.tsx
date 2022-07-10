@@ -7,7 +7,7 @@ import Avatar from '../../../../elements/Avatar';
 const CurrentUserAvatar: FC<{ user: User }> = ({ user }) => (
   <div className="daisy-dropdown daisy-dropdown-end daisy-dropdown-hover">
     <button type="button" className="m-0 btn">
-      <Avatar size={42} user={user} />
+      <Avatar size={42} photoURL={user.photoURL} />
     </button>
     <ul className="p-2 w-52 shadow daisy-dropdown-content daisy-menu bg-base-100 rounded-box">
       <li>
