@@ -1,37 +1,20 @@
-import MDEditor from '@uiw/react-md-editor';
-import { useState } from 'react';
-import '@uiw/react-md-editor/markdown-editor.css';
-import '@uiw/react-markdown-preview/markdown.css';
-import { useRecoilState } from 'recoil';
-import markdownState from '../../../../libs/recoil/markdownState';
-import onImagePasted from './utils/onImagePasted';
+import type { FC } from 'react';
+import MdEditor from './components/MdEditor';
+import TagsInput from './components/TagsInput';
 
-const MdEditor = () => {
-  const [markdownGlobal, setMarkdownGlobal] = useRecoilState(markdownState);
-  const [markdown, setMarkdown] = useState<string | undefined>(markdownGlobal);
-
-  return (
-    <div data-color-mode="light">
-      <MDEditor
-        value={markdown}
-        onChange={(value) => {
-          setMarkdownGlobal(value);
-          setMarkdown(value);
-        }}
-        onPaste={async (event) => {
-          await onImagePasted(event.clipboardData, setMarkdown);
-        }}
-        onDrop={async (event) => {
-          await onImagePasted(event.dataTransfer, setMarkdown);
-        }}
-        height={440}
-        textareaProps={{
-          placeholder: 'Fill in your markdown for the coolest of the cool.',
-        }}
-        hideToolbar
+const Editor: FC = () => (
+  <div>
+    <div className="m-5 flex justify-center">
+      <input
+        placeholder="Title"
+        className="h-14 w-1/2 border-none bg-transparent text-center text-4xl font-semibold text-primary-content outline-none"
       />
     </div>
-  );
-};
+    <div className="m-5 flex justify-center">
+      <TagsInput placeholder="tags" />
+    </div>
+    <MdEditor />
+  </div>
+);
 
-export default MdEditor;
+export default Editor;
