@@ -2,7 +2,7 @@ import type { SetStateAction } from 'react';
 import { fileUpload } from '../../../../../libs/firebase/storage';
 import insertToTextArea from './insertToTextArea';
 
-const onImagePasted = async (dataTransfer: DataTransfer, setMarkdown: (value: SetStateAction<string | undefined>) => void) => {
+const onImagePasted = async (dataTransfer: DataTransfer, setMarkdown: (value: SetStateAction<string | null | undefined>) => void) => {
   const files: File[] = [];
   for (let index = 0; index < dataTransfer.items.length; index += 1) {
     const file = dataTransfer.files.item(index);

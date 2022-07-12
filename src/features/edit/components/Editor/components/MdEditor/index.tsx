@@ -1,21 +1,25 @@
 import MDEditor from '@uiw/react-md-editor';
-import { useState } from 'react';
+import { FC, useState } from 'react';
+import onImagePasted from '../../utils/onImagePasted';
 import '@uiw/react-md-editor/markdown-editor.css';
 import '@uiw/react-markdown-preview/markdown.css';
-import { useRecoilState } from 'recoil';
-import markdownState from '../../../../../../libs/recoil/markdownState';
-import onImagePasted from '../../utils/onImagePasted';
 
-const MdEditor = () => {
-  const [markdownGlobal, setMarkdownGlobal] = useRecoilState(markdownState);
-  const [markdown, setMarkdown] = useState<string | undefined>(markdownGlobal);
+type Props = {
+  markdownRecoil?: string | null | undefined;
+  setMarkdownRecoil?: (value: string | undefined) => void;
+};
+
+const MdEditor: FC<Props> = ({ markdownRecoil, setMarkdownRecoil }) => {
+  const [markdown, setMarkdown] = useState<string | null | undefined>(markdownRecoil);
 
   return (
     <div data-color-mode="light">
       <MDEditor
-        value={markdown}
+        value={markdown || undefined}
         onChange={(value) => {
-          setMarkdownGlobal(value);
+          if (setMarkdownRecoil) {
+            setMarkdownRecoil(value);
+          }
           setMarkdown(value);
         }}
         onPaste={async (event) => {
@@ -32,6 +36,11 @@ const MdEditor = () => {
       />
     </div>
   );
+};
+
+MdEditor.defaultProps = {
+  markdownRecoil: undefined,
+  setMarkdownRecoil: undefined,
 };
 
 export default MdEditor;

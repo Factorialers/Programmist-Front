@@ -1,5 +1,7 @@
 import { FC, useState, KeyboardEvent, useCallback } from 'react';
+import { useRecoilState } from 'recoil';
 import Tag from '../../../../../../components/elements/Tag';
+import workState from '../../../../../../libs/recoil/edit/workState';
 
 export type TagsInputProps = {
   placeholder?: string;
@@ -7,7 +9,8 @@ export type TagsInputProps = {
 };
 
 const TagsInput: FC<TagsInputProps> = ({ placeholder, separators }) => {
-  const [tags, setTags] = useState<string[]>([]);
+  const [work, setWork] = useRecoilState(workState);
+  const [tags, setTags] = useState<string[]>(work.tags);
 
   const handleOnKeyUp = useCallback(
     (event: KeyboardEvent<HTMLInputElement>) => {
@@ -16,6 +19,7 @@ const TagsInput: FC<TagsInputProps> = ({ placeholder, separators }) => {
       const text = (event.target as HTMLInputElement).value;
 
       if (event.key === 'Backspace' && tags.length && !text) {
+        setWork({ ...work, tags: tags.slice(0, -1) });
         setTags(tags.slice(0, -1));
       }
 
@@ -23,20 +27,23 @@ const TagsInput: FC<TagsInputProps> = ({ placeholder, separators }) => {
         if (tags.includes(text)) {
           return;
         }
+
+        setWork({ ...work, tags: [...tags, text] });
         setTags([...tags, text]);
         // eslint-disable-next-line no-param-reassign
         (event.target as HTMLInputElement).value = '';
         event.preventDefault();
       }
     },
-    [tags, separators],
+    [tags, separators, work, setWork],
   );
 
   const onTagRemove = useCallback(
     (text: string) => {
+      setWork({ ...work, tags: tags.filter((tag) => tag !== text) });
       setTags(tags.filter((tag) => tag !== text));
     },
-    [tags],
+    [tags, work, setWork],
   );
 
   return (

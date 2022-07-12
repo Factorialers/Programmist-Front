@@ -1,16 +1,16 @@
 import type { FC } from 'react';
-import { useSetRecoilState } from 'recoil';
+import { useRecoilState } from 'recoil';
 import DropZone from '../../../../components/elements/DropZone';
-import sourceCodeState from '../../../../libs/recoil/sourceCodeState';
+import workState from '../../../../libs/recoil/edit/workState';
 
 const GetSourceCode: FC = () => {
-  const setSourceCode = useSetRecoilState(sourceCodeState);
+  const [work, setWork] = useRecoilState(workState);
 
   return (
     <div className="flex justify-center">
       <DropZone
         onDrop={(acceptedFiles) => {
-          setSourceCode(acceptedFiles);
+          setWork({ ...work, sourceCode: acceptedFiles });
         }}
       />
     </div>

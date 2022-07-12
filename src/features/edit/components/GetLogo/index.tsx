@@ -1,16 +1,16 @@
 import type { FC } from 'react';
-import { useSetRecoilState } from 'recoil';
+import { useRecoilState } from 'recoil';
 import DropZone from '../../../../components/elements/DropZone';
-import logoState from '../../../../libs/recoil/logoState';
+import workState from '../../../../libs/recoil/edit/workState';
 
 const GetLogo: FC = () => {
-  const setSourceCode = useSetRecoilState(logoState);
+  const [work, setWork] = useRecoilState(workState);
 
   return (
     <div className="flex justify-center">
       <DropZone
         onDrop={(acceptedFiles) => {
-          setSourceCode(acceptedFiles[0]);
+          setWork({ ...work, logo: acceptedFiles[0] });
         }}
         zoneContent="Drag and Drop Image Here!"
         btnText="select image"
